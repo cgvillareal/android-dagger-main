@@ -25,8 +25,12 @@ import com.example.android.dagger.user.UserManager
 open class MyApplication : Application() {
 
     //Instancia de appComponent que sera usada por todas las actividades del proyecto
-    val appComponent : AppComponent by lazy {
-        DaggerAppComponent.factory().create(applicationContext)
+    val appComponent: AppComponent by lazy {
+        initializeComponent()
+    }
+
+    open fun initializeComponent(): AppComponent {
+        return DaggerAppComponent.factory().create(applicationContext)
     }
 
     /*open val userManager by lazy {
